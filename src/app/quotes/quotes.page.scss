@@ -1,0 +1,34 @@
+
+@media(min-width: 0px){
+    .images{
+        column-count: 2;
+
+    }
+}
+
+@media(min-width: 420px){
+    .images{
+        column-count: 3;
+
+    }
+}
+@media(min-width: 720px){
+    .images{
+        column-count: 4;
+
+    }
+}
+
+.images{
+   margin: 10px 5px;
+
+}
+
+.tags{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}

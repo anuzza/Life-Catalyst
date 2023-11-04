@@ -1,0 +1,79 @@
+a{
+    color: #ff9008
+}
+
+.input{
+    font-size:300;
+}
+
+ion-item{
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+.image{
+
+    height: 30%;
+
+}
+.header{
+    margin-bottom: 0.5%;
+    text-align: center;
+
+    .subtitle{
+        font-size: 1rem;
+
+    }
+
+}
+
+.signuplink{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    align-content: center;
+    position: absolute;
+    justify-content: center;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    right: 0;
+
+    p{
+        font-size: 0.9rem;
+
+    }
+
+    a{
+        text-decoration: none;
+    }
+}
+
+.btn{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+
+
+}
+
+.forgotpassword{
+    display: flex;
+    justify-content: flex-end;
+    a{
+        font-weight: 400;
+        font-size: 0.9rem;
+        text-decoration: none;
+    }
+
+
+}
+
+
+
+.container{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/landing']"
+        ><ion-icon name="arrow-back-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <ion-title class="title">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-img class="image" src="assets/images/sammy.png"></ion-img>
+
+  <div class="container">
+    <div class="header">
+      <p class="subtitle">Sign in to fill your day with positivity</p>
+    </div>
+    <form>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-input placeholder="Email" class="input"> </ion-input>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Password" class="input"> </ion-input>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+        </ion-item>
+        <div class="forgotpassword">
+          <a [routerLink]="['/reset-password']">Forgot password?</a>
+        </div>
+        <div class="signuplink">
+          <p>New member? <a [routerLink]="['/signup']">SignUp</a></p>
+        </div>
+      </div>
+      <span> *Click login button to proceed to home *</span>
+      <div class="btn">
+        <ion-button [routerLink]="['/tabs']">Login</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

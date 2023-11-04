@@ -1,20 +1,63 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/landing']"
+        ><ion-icon name="arrow-back-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+    <ion-title class="title">Home</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <ion-card class="card" [routerLink]="['/tabs/quotes', {tag:'Motivation'}]">
+      <div class="image">
+        <img
+          alt="a girl, holding green success flag"
+          src="assets/images/motivation.png"
+        />
+      </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+      <ion-card-header>
+        <ion-card-title>Motivation</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Find inspiring quotes and encouraging words to uplift your mood
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="card" [routerLink]="['/tabs/videos']">
+      <div class="image">
+        <img
+          alt="a boy with earphones, doing meditation"
+          src="assets/images/sammy-meditation.png"
+        />
+      </div>
+
+      <ion-card-header>
+        <ion-card-title>Meditation</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Practice breathing exercises to calm yourself and grab positive energy
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="card" [routerLink]="['/tabs/resources']">
+      <div class="image">
+        <img
+          alt="three people staying at home"
+          src="assets/images/resources.png"
+        />
+      </div>
+
+      <ion-card-header>
+        <ion-card-title>Resources</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Find useful resources like counseling sessions and self-care tips
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

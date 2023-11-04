@@ -1,0 +1,43 @@
+
+.one-image{
+    margin: 1px;
+}
+
+@media(min-width: 0px){
+    .images{
+        column-count: 2;
+
+    }
+}
+
+@media(min-width: 420px){
+    .images{
+        column-count: 3;
+
+    }
+}
+@media(min-width: 720px){
+    .images{
+        column-count: 4;
+
+    }
+}
+
+
+.images{
+   margin: 0 5px;
+
+}
+
+.image-container{
+    background-size: cover;
+    min-height: 150px;
+
+}
+
+.videos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

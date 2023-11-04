@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Quotes</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="tags">
+    <div *ngFor="let tag of tags">
+      <ion-chip *ngIf="tag===selectedTag" (click)="filter(tag)"
+        >{{tag}}</ion-chip
+      >
+      <ion-chip *ngIf="tag!==selectedTag" [outline]="true" (click)="filter(tag)"
+        >{{tag}}</ion-chip
+      >
+    </div>
+  </div>
+
+  <ion-content class="quotes">
+    <div class="images">
+      <div class="one-image" *ngFor="let image of filteredImages">
+        <img src="{{image.url}}" tappable (click)="openPreview(image)" />
+      </div>
+    </div>
+  </ion-content>
+</ion-content>

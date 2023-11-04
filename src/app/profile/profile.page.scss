@@ -1,0 +1,25 @@
+.header{
+    margin-top: 2%;
+    text-align: center;
+}
+
+.profile{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.person{
+    font-size: 100px;
+}
+
+label{
+    margin-right: 20px;
+}
+
+.card{
+    max-width: 500px;
+}

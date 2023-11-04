@@ -1,0 +1,36 @@
+ion-content{
+    --background: transparent;
+}
+
+ion-footer{
+    margin-bottom: 10px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: realtive;
+}
+
+.image{
+    object-fit: fill;
+    width: 600px;
+    height: 600px;
+    display: block;
+
+}
+
+ion-toolbar {
+  --background: rgba(177, 176, 176, 0.5); /* Black see-through */
+}
+
+
+.heart{
+    color: red;
+}
+
+
+
+

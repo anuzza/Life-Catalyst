@@ -1,0 +1,47 @@
+.header{
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
+img{
+    height: 200px;
+
+
+}
+
+
+
+.card{
+    width: 90%;
+    height : 30%;
+    cursor: pointer;
+    margin: 20px 20px;
+    justify-content: center;
+}
+
+.card:hover{
+  transform: translate3D(0,-1px,0) scale(1.03);
+}
+
+ion-button:hover{
+    transform: translate3D(0,-1px,0) scale(1.03);
+}
+
+.image{
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}

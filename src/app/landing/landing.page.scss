@@ -1,0 +1,38 @@
+
+.image{
+  overflow: hidden;
+  height: auto;
+  object-fit: cover;
+  border: none;
+
+}
+
+.container{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+ion-button{
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+
+
+.text{
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
+
+.sub{
+  margin: 0 15px;
+}
+
+
+
+

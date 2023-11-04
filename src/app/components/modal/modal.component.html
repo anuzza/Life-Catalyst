@@ -1,0 +1,98 @@
+<div class="card-emotions">
+  <ion-toolbar>
+    <ion-card-header>
+      <ion-card-title>Hi Anuja!</ion-card-title>
+    </ion-card-header>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()" [strong]="true"
+        ><ion-icon name="close-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-card-header>
+    <ion-card-title>How are you feeling today?</ion-card-title>
+  </ion-card-header>
+  <div>
+    <ion-card-content>
+      Select one of the emotions that describes your mood lately
+    </ion-card-content>
+    <div class="emotions">
+      <div class="row1">
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-smile-beam"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-laugh-beam"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Success' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-grin-stars"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-grin-hearts"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Anxiety' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-tired"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-surprise"></i
+        ></ion-button>
+      </div>
+      <div class="row2">
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Anxiety' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-sad-tear"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-rolling-eyes"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-sad-cry"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-angry"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-dizzy"></i
+        ></ion-button>
+        <ion-button
+          fill="clear"
+          [routerLink]="['/tabs/quotes', { tag: 'Success' }]"
+          (click)="cancel()"
+          ><i class="fa-solid fa-face-grimace"></i
+        ></ion-button>
+      </div>
+    </div>
+  </div>
+</div>
