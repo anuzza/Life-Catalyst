@@ -4,9 +4,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <div class="header">
-    <ion-title>My Profile </ion-title>
-  </div>
   <div class="profile">
     <ion-icon class="person" name="person-circle-outline"></ion-icon>
     <span>{{me.name}}</span>
@@ -14,23 +11,39 @@
     <ion-card class="card">
       <ion-card-header>
         <ion-card-title>
-          <ion-icon name="create-outline"></ion-icon> Personal
-          Information</ion-card-title
-        >
+          <ion-icon name="create-outline"></ion-icon> Personal Information
+        </ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
           <ion-item>
             <ion-input
               name="name"
-              label="Full Name"
+              label="Full Name *"
               value="{{me.name}}"
               [(ngModel)]="me.name"
+              required
             ></ion-input>
           </ion-item>
           <ion-item>
-            <label>BirthDate</label>
-            <input type="date" value="{{me.bday}}" [(ngModel)]="me.bday" />
+            <ion-input
+              name="email"
+              label="Email *"
+              type="email"
+              value="{{me.email}}"
+              [(ngModel)]="me.email"
+              required
+            />
+          </ion-item>
+          <ion-item>
+            <label for="bday">BirthDate</label>
+            <input
+              type="date"
+              name="bday"
+              id="bday"
+              value="{{me.bday}}"
+              [(ngModel)]="me.bday"
+            />
           </ion-item>
         </ion-list>
       </ion-card-content>
@@ -51,17 +64,15 @@
           [multiple]="true"
           [(ngModel)]="me.preferedTimes"
           dropdownPosition="bottom"
-          [virtualScroll]="true"
           bindValue="id"
           bindLabel="name"
           [searchable]="true"
+          appendTo="body"
         >
         </ng-select>
         <br />
-
-        <label> Number of times you want to get notified</label>
-        <input type="number" [(ngModel)]="me.numbers" value="{{me.numbers}}" />
       </ion-card-content>
     </ion-card>
+    <ion-button class="button">Save</ion-button>
   </div>
 </ion-content>

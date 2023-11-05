@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { AuthenticationService } from 'src/app/authentication.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +14,7 @@ export class SignupPage implements OnInit {
   signupForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-    public auth: AuthenticationService, public route: Router, public toast: ToastController) { }
+    public auth: AuthService, public route: Router, public toast: ToastController) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -42,31 +42,12 @@ export class SignupPage implements OnInit {
   }
 
   async signUp(){
-    const loading = await this.loadingCtrl.create();
-    await loading.present()
     if(this.signupForm?.valid){
-
-      await this.auth.createUser(this.signupForm.value.email, this.signupForm.value.password).
-      then((res)=>{
-        loading.dismiss();
-        this.route.navigate(["/tabs"])
-
-      }, (err)=>{
-        loading.dismiss();
-       if(err.code==="auth/email-already-in-use"){
-          this.presentToast("danger","Email is already in use!")
-        }else{
-          this.presentToast("danger", err.code)
-        }
-      })
-    }else{
-      loading.dismiss();
+      await this.auth.SignUp(this.signupForm.value.fullname,this.signupForm.value.email, this.signupForm.value.password)
+    }else {
       this.presentToast("danger","Please fill out all the required fields")
-
     }
-    this.signupForm.reset();
-
-
+    //this.signupForm.reset();
   }
 
 }

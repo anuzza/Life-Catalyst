@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { AuthenticationService } from 'src/app/authentication.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+
   loginForm: FormGroup;
 
   constructor(public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-    public auth: AuthenticationService, public route: Router, public toast: ToastController) { }
+    public route: Router, public toast: ToastController, public auth:AuthService) { }
 
 
   ngOnInit() {
@@ -42,29 +43,14 @@ export class LoginPage implements OnInit {
   }
 
   async login(){
-    const loading = await this.loadingCtrl.create();
-    await loading.present();
     if(this.loginForm?.valid){
-      await this.auth.loginUser(this.loginForm.value.email, this.loginForm.value.password).
-      then(()=>{
-
-        this.route.navigate(["/tabs"])
-      }, (err)=>{
-        loading.dismiss();
-        if(err.code==="auth/invalid-login-credentials"){
-          this.presentToast("danger","Invalid Credentials!")
-        }else{
-          this.presentToast("danger", err.code)
-
-        }
-      })
+          await this.auth.SignIn(this.loginForm.value.email, this.loginForm.value.password)
     }else{
-      loading.dismiss();
       this.presentToast("danger","Please fill out all the required fields")
     }
     this.loginForm.reset();
-
   }
+
 
 
 }

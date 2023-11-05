@@ -21,11 +21,7 @@
     <form [formGroup]="signupForm" novalidate (ngSubmit)="signUp()">
       <div class="ion-padding">
         <ion-item>
-          <ion-input
-            formControlName="fullname"
-            placeholder="Name *"
-            class="input"
-          >
+          <ion-input formControlName="fullname" placeholder="Name *">
           </ion-input>
           <ion-icon name="person-outline"></ion-icon>
         </ion-item>
@@ -42,12 +38,7 @@
         </div>
 
         <ion-item>
-          <ion-input
-            formControlName="email"
-            placeholder="Email *"
-            class="input"
-          >
-          </ion-input>
+          <ion-input formControlName="email" placeholder="Email *"> </ion-input>
           <ion-icon name="person-outline"></ion-icon>
         </ion-item>
         <div
@@ -64,7 +55,7 @@
             class="error"
             *ngIf="this.errorControl?.['email'].errors?.['pattern']"
           >
-            Email should be valid
+            Invalid email!
           </ion-text>
         </div>
 
@@ -72,7 +63,6 @@
           <ion-input
             formControlName="password"
             placeholder="Password *"
-            class="input"
             type="password"
           >
           </ion-input>

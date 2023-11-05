@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -8,6 +9,8 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
+  user:any;
   times =[
     {
       id:1,
@@ -26,15 +29,16 @@ export class ProfilePage implements OnInit {
     name: "Anuja Sharma",
     bday: "",
     preferedTimes: [1],
-    numbers:1,
+    email:"sharmanuja4@gmail.com"
   }
 
 
-  constructor(private toastController: ToastController) {
-
+  constructor(private toastController: ToastController, public auth: AuthenticationService) {
+    this.user=this.auth.getProfile();
    }
 
   ngOnInit(){
+    console.log(this.user);
 
 
   }
@@ -55,7 +59,6 @@ export class ProfilePage implements OnInit {
 
 
   }
-
 
 
 }
