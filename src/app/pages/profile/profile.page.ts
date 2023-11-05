@@ -23,7 +23,6 @@ export class ProfilePage implements OnInit {
     { id: 3,
       name: "Night"
     }]
-  numbers =[1,2,3,4]
 
   me={
     name: "Anuja Sharma",

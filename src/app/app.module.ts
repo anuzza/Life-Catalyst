@@ -18,16 +18,23 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import {StorageModule} from "@angular/fire/storage";
 import { AuthService } from './services/auth.service';
-import { FirebaseAppModule, initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseAppModule, getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import {FirestoreSettings, initializeFirestore, persistentLocalCache, persistentMultipleTabManager, provideFirestore} from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [AppComponent, ModalComponent, ImageModalComponent],
   imports: [BrowserModule,FormsModule, ReactiveFormsModule, NgSelectModule,
-  FirebaseAppModule,
+FirebaseAppModule, AngularFireAuthModule, AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule.enablePersistence(),
     IonicModule.forRoot(),
     StorageModule,
+    provideFirestore(() =>
+        initializeFirestore(getApp(), {
+          localCache: persistentLocalCache({
+            tabManager: persistentMultipleTabManager(),
+          }),
+        })
+      ),
  AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: !isDevMode(),
   // Register the ServiceWorker as soon as the application is stable
