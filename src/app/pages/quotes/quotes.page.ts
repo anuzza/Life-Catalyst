@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ImageModalComponent } from '../components/image-modal/image-modal.component';
+import { ImageModalComponent } from 'src/app/components/image-modal/image-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
 
 

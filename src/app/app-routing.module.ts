@@ -10,25 +10,25 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'landing',
-    loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
+    loadChildren: () => import('./pages/landing/landing.module').then( m => m.LandingPageModule)
   },
   {
     path: 'reset-password',
-    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+    loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
     path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
-  
+
 
 ];
 

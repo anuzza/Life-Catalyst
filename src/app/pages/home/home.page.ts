@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { ModalComponent } from '../components/modal/modal.component';
-
+import { ModalComponent } from 'src/app/components/modal/modal.component';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomePage {
 
   public alertButtons = ['OK'];
 
-  constructor(private toastController: ToastController,private modalCtrl: ModalController ) {}
+  constructor(private toastController: ToastController,
+    private modalCtrl: ModalController, public route: Router, public auth: AuthenticationService ) {}
 
   ngOnInit() {
    // this.presentToast('top');
@@ -45,5 +47,11 @@ export class HomePage {
 
     const { data, role } = await modal.onWillDismiss();
 
+  }
+
+  async logout(){
+    this.auth.logout().then((res)=>{
+      this.route.navigate(['/login'])
+    })
   }
 }

@@ -10,24 +10,24 @@ const routes: Routes = [
     children:[
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+        loadChildren: () => import('../pages/home/home.module').then( m => m.HomePageModule)
       },
       {
         path: 'quotes',
-        loadChildren: () => import('../quotes/quotes.module').then( m => m.QuotesPageModule)
+        loadChildren: () => import('../pages/quotes/quotes.module').then( m => m.QuotesPageModule)
       },
       {
         path: 'videos',
-        loadChildren: () => import('../videos/videos.module').then( m => m.VideosPageModule)
+        loadChildren: () => import('../pages/videos/videos.module').then( m => m.VideosPageModule)
       },
       {
         path: 'profile',
-        loadChildren: () => import('../profile/profile.module').then( m => m.ProfilePageModule)
+        loadChildren: () => import('../pages/profile/profile.module').then( m => m.ProfilePageModule)
 
       },
       {
         path: 'resources',
-        loadChildren: () => import('../resources/resources.module').then( m => m.ResourcesPageModule)
+        loadChildren: () => import('../pages/resources/resources.module').then( m => m.ResourcesPageModule)
       },
       {
         path: '',

@@ -1,5 +1,5 @@
 a{
-    color: #ffc33f
+    color: #ff9008
 }
 
 .input{
@@ -10,9 +10,12 @@ ion-item{
     border-radius: 10px;
     margin-bottom: 16px;
 }
+.image{
 
+    height: 30%;
+
+}
 .header{
-    margin-top: 10px;
     margin-bottom: 0.5%;
     text-align: center;
 
@@ -21,13 +24,9 @@ ion-item{
 
     }
 
-    .title{
-        font-size: 1.8rem;
-    }
-
 }
 
-.signinlink{
+.signuplink{
     display: flex;
     margin: auto;
     flex-direction: row;
@@ -50,24 +49,36 @@ ion-item{
 }
 
 .btn{
-    margin-top: 6px;
+    margin-top: 10%;
     display: flex;
     justify-content: center;
 
 
 }
 
+.forgotpassword{
+    display: flex;
+    justify-content: flex-end;
+    a{
+        font-weight: 400;
+        font-size: 0.9rem;
+        text-decoration: none;
+    }
 
-.image{
-    margin-top: 2%;
-    height: 30%;
 
 }
 
 
+
 .container{
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.error{
+    color: red;
+    font: 0.5rem;
 }
