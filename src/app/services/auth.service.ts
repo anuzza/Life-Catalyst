@@ -7,7 +7,6 @@ import * as uuid from 'uuid';
 import { map } from 'rxjs/operators';
 
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -25,19 +24,12 @@ export class AuthService {
     public alertCtrl: AlertController
   ) {
 
-    /* Saving user data in localstorage when
-    logged in and setting up null when logged out */
+    // /* Saving user data in localstorage when
+    // logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.getUserData(user).then(()=>{
-          localStorage.setItem('user', this.userData?.uid);
-          localStorage.getItem('user')!;
-
         })
-
-      } else {
-        localStorage.setItem('user', 'null');
-        localStorage.getItem('user')!;
       }
     });
   }
@@ -63,13 +55,13 @@ export class AuthService {
         this.getUserData(result.user).then(()=>{
           this.afAuth.authState.subscribe((user) => {
             if (user) {
+              localStorage.setItem('user', this.userData?.uid)
               this.router.navigate(['/tabs']);
             }
           });
         })
       }) .catch((errorr) => {
         loading.dismiss();
-        console.log(errorr.message);
         if(errorr.code==="auth/invalid-login-credentials"){
           this.presentToast("danger","Invalid Credentials!")
         }else{
@@ -99,6 +91,7 @@ export class AuthService {
           loading.dismiss();
 
         }).then(()=>{
+          localStorage.setItem('user', this.userData?.uid)
           this.router.navigate(["/tabs"])
         })
 
@@ -142,10 +135,9 @@ export class AuthService {
         }
       });
   }
-  // Returns true when user is looged in
-  get isLoggedIn(): boolean {
-    const user = localStorage.getItem('user')!;
-    return user !== null? true : false;
+  // Returns true when user is logged in
+  isLoggedIn() {
+    return !!localStorage.getItem("user");
   }
 
 

@@ -17,13 +17,13 @@ import { ImageModalComponent } from './components/image-modal/image-modal.compon
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import {StorageModule} from "@angular/fire/storage";
-import { AuthService } from './services/auth.service';
 import { FirebaseAppModule, getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {FirestoreSettings, initializeFirestore, persistentLocalCache, persistentMultipleTabManager, provideFirestore} from "@angular/fire/firestore";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, ModalComponent, ImageModalComponent],
-  imports: [BrowserModule,FormsModule, ReactiveFormsModule, NgSelectModule,
+  imports: [BrowserModule,FormsModule, ReactiveFormsModule, NgSelectModule, HttpClientModule,
 FirebaseAppModule, AngularFireAuthModule, AngularFireModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     IonicModule.forRoot(),

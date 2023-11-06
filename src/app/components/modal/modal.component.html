@@ -1,7 +1,9 @@
 <div class="card-emotions">
   <ion-toolbar>
     <ion-card-header>
-      <ion-card-title>Hi Anuja!</ion-card-title>
+      <ion-card-title
+        >Hi {{ this.auth.userData?.fullname?.split(" ")[0] }}!</ion-card-title
+      >
     </ion-card-header>
     <ion-buttons slot="end">
       <ion-button (click)="cancel()" [strong]="true"

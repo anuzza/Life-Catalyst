@@ -19,7 +19,6 @@ export class HomePage {
     private modalCtrl: ModalController, public route: Router, public auth: AuthService ) {}
 
   ngOnInit() {
-   // this.presentToast('top');
     this.openModal();
   }
 

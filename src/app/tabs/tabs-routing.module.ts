@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
+import { LoggedInGuard } from '../guards/logged-in.guard';
 
 const routes: Routes = [
   {
@@ -10,11 +11,11 @@ const routes: Routes = [
     children:[
       {
         path: 'home',
-        loadChildren: () => import('../pages/home/home.module').then( m => m.HomePageModule)
+        loadChildren: () => import('../pages/home/home.module').then( m => m.HomePageModule),
       },
       {
         path: 'quotes',
-        loadChildren: () => import('../pages/quotes/quotes.module').then( m => m.QuotesPageModule)
+        loadChildren: () => import('../pages/quotes/quotes.module').then( m => m.QuotesPageModule),
       },
       {
         path: 'videos',
@@ -33,7 +34,12 @@ const routes: Routes = [
         path: '',
         redirectTo:"home",
         pathMatch:'full'
+      },
+      {
+        path: '**',
+        redirectTo:"home",
       }
+
 
     ],
   }

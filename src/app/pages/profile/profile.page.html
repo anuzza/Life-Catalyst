@@ -6,7 +6,7 @@
 <ion-content [fullscreen]="true">
   <div class="profile">
     <ion-icon class="person" name="person-circle-outline"></ion-icon>
-    <span>{{me.name}}</span>
+    <span>{{this.user.fullname}}</span>
 
     <ion-card class="card">
       <ion-card-header>
@@ -20,8 +20,8 @@
             <ion-input
               name="name"
               label="Full Name *"
-              value="{{me.name}}"
-              [(ngModel)]="me.name"
+              value="{{this.user.fullname}}"
+              [(ngModel)]="this.user.fullname"
               required
             ></ion-input>
           </ion-item>
@@ -30,8 +30,8 @@
               name="email"
               label="Email *"
               type="email"
-              value="{{me.email}}"
-              [(ngModel)]="me.email"
+              value="{{this.user.email}}"
+              [(ngModel)]="this.user.email"
               required
             />
           </ion-item>
@@ -41,8 +41,8 @@
               type="date"
               name="bday"
               id="bday"
-              value="{{me.bday}}"
-              [(ngModel)]="me.bday"
+              value="{{this.user.birthDate}}"
+              [(ngModel)]="this.user.birthDate"
             />
           </ion-item>
         </ion-list>
@@ -62,7 +62,7 @@
           class="select"
           [items]="times"
           [multiple]="true"
-          [(ngModel)]="me.preferedTimes"
+          [(ngModel)]="this.user.notificationPreference"
           dropdownPosition="bottom"
           bindValue="id"
           bindLabel="name"

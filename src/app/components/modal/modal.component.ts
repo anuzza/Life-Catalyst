@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -9,10 +10,11 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalComponent  implements OnInit {
 
+  constructor(private modalCtrl: ModalController, public auth: AuthService) {
+   }
 
-  constructor(private modalCtrl: ModalController) { }
-
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');

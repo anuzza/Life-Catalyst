@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,16 +23,9 @@ export class ProfilePage implements OnInit {
       name: "Night"
     }]
 
-  me={
-    name: "Anuja Sharma",
-    bday: "",
-    preferedTimes: [1],
-    email:"sharmanuja4@gmail.com"
-  }
 
-
-  constructor(private toastController: ToastController, public auth: AuthenticationService) {
-    this.user=this.auth.getProfile();
+  constructor(private toastController: ToastController, public auth: AuthService) {
+    this.user=this.auth.userData;
    }
 
   ngOnInit(){
