@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,7 +10,7 @@ export class QuotesService {
 
   constructor(public http: HttpClient) { }
 
-  private url:string = "http://zenquotes.io/api/quotes/"+environment.apiKey
+  private url:string = "http://zenquotes.io/api/quotes/"
 
 
 

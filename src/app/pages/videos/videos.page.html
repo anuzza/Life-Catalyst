@@ -1,3 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">Videos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="this.auth.SignOut()">
+        Logout <ion-icon name="log-out-outline"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
   <ion-searchbar
     placeholder="Search"

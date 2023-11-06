@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./videos.page.scss'],
 })
 export class VideosPage implements OnInit {
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, public auth: AuthService) { }
 
   ngOnInit() {
   }

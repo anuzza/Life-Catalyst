@@ -4,6 +4,7 @@ import { ImageModalComponent } from 'src/app/components/image-modal/image-modal.
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuotesService } from 'src/app/services/quotes.service';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class QuotesPage implements OnInit {
   selectedTag:any="";
 
   constructor(private modalCtrl: ModalController, private route: ActivatedRoute,
-    private router: Router,public qs: QuotesService
+    private router: Router,public qs: QuotesService, public auth: AuthService
 ) {
     this.selectedTag = this.route.snapshot.paramMap.get("tag");
    }
