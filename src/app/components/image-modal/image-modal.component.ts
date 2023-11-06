@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Share } from '@capacitor/share';
+import { QuotesService } from 'src/app/services/quotes.service';
 
 
 @Component({
@@ -12,7 +13,9 @@ export class ImageModalComponent  implements OnInit {
 
   @Input('img')img: any;
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, public qs: QuotesService) {
+
+  }
 
   ngOnInit() {}
 
@@ -33,9 +36,9 @@ export class ImageModalComponent  implements OnInit {
     });
   }
 
-  love(){
-    this.img.isFav =!this.img.isFav;
+  
 
-  }
+
+
 
 }

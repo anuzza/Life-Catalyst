@@ -1,11 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="love()" [strong]="true"
-        ><ion-icon *ngIf="img.isFav === false" name="heart-outline"></ion-icon
+      <ion-button (click)="this.qs.addFav(this.img)" [strong]="true"
+        ><ion-icon
+          *ngIf="!this.qs.favorites.includes(this.img)"
+          name="heart-outline"
+        ></ion-icon
         ><ion-icon
           class="heart"
-          *ngIf="img.isFav === true"
+          *ngIf="this.qs.favorites.includes(this.img)"
           name="heart"
         ></ion-icon>
       </ion-button>

@@ -150,6 +150,21 @@ export class AuthService {
   }
 
 
+  async UpdateUserData(user){
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.afs.collection('users').
+        doc("user_"+user.uid).set(user).then(()=>{
+          this.userData=user;
+        }).then(()=>{
+          loading.dismiss();
+          this.presentToast("success", "Profile Updated Successfully")
+        }).catch((error)=>{
+          this.presentToast("err", error.code)
+        })
+
+  }
+
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {

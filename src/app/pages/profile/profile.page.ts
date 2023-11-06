@@ -25,10 +25,10 @@ export class ProfilePage implements OnInit {
 
 
   constructor(private toastController: ToastController, public auth: AuthService) {
-    this.user=this.auth.userData;
    }
 
   ngOnInit(){
+    this.user=this.auth.userData;
     console.log(this.user);
 
 
@@ -47,8 +47,7 @@ export class ProfilePage implements OnInit {
   }
 
   save(){
-
-
+    this.auth.UpdateUserData(this.auth.userData);
   }
 
 
