@@ -1,100 +1,64 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { ModalController, ViewWillEnter } from '@ionic/angular';
 import { ImageModalComponent } from 'src/app/components/image-modal/image-modal.component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { QuotesService } from 'src/app/services/quotes.service';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/services/auth.service';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
+ function getImages(tag:string){
+    const imagesArr =[]
+    for(let i=0;i<20;i++){
+   imagesArr.push({
+           tag,
+    url:`https://zenquotes.io/api/image/${environment.imageAPIKey}&keyword=${tag}?${i}`
+        })
+    }
+    return imagesArr
+  }
 
 @Component({
   selector: 'app-quotes',
   templateUrl: './quotes.page.html',
   styleUrls: ['./quotes.page.scss'],
+  animations:[
+    trigger("todoItemAnim",[
+      transition(":leave",[
+        animate(1000,style({
+          opacity:0,
+        }))
+      ])
+    ])
+  ]
 })
-export class QuotesPage implements OnInit {
-
+export class QuotesPage implements ViewWillEnter {
+  tags=["change", "confidence", "inspiration", "success", "failure","life","anxiety","favorites"]
   filteredImages:any=[];
+  favoriteImages:any=[];
   selectedTag:any="";
+  user:any;
 
-  constructor(private modalCtrl: ModalController, private route: ActivatedRoute,
-    private router: Router,public qs: QuotesService, public auth: AuthService
-) {
-    this.selectedTag = this.route.snapshot.paramMap.get("tag");
-   }
-
-  ngOnInit() {
-
-    if(this.selectedTag===null){
-      this.selectedTag="All";
-    }
-    this.filter(this.selectedTag);
+  constructor(private modalCtrl: ModalController, public auth: AuthService, public route: ActivatedRoute, public router: Router) {
+    this.selectedTag=this.route.snapshot.paramMap.get('id')
   }
 
-  images=[
-    {
-      url: "assets/images/1.jpg",
-      tag: "Success",
-    },
-     {
-      url: "assets/images/2.jpg",
-      tag: "Anxiety",
-    },
-     {
-      url: "assets/images/3.jpg",
-      tag: "Anxiety",
-    },
-     {
-      url: "assets/images/4.jpg",
-      tag: "Inspiring",
-    },
-     {
-      url: "assets/images/5.jpg",
-      tag: "Success",
-    },
-     {
-      url: "assets/images/6.jpg",
-      tag: "Motivation",
-    },
-     {
-      url: "assets/images/7.jpg",
-      tag: "Motivation",
-    },
-     {
-      url: "assets/images/8.jpg",
-      tag: "Inspiring",
-    },
-     {
-      url: "assets/images/9.jpg",
-      tag: "Inspiring",
-    },
+  ionViewWillEnter() {
+    if (!this.selectedTag){
+      this.selectedTag = this.tags[0]
+    }
 
-    {
-      url: "assets/images/10.jpg",
-      tag: "Motivation",
-      isFav: false,
-    },
-
-  ]
-
-
-  tags=["All", "Motivation", "Inspiring", "Anxiety", "Success", "Favorites"]
-
-  getImages(){
-    this.qs.getQuotes().subscribe((res)=>{
-      console.log(res.data()),
-      (err)=>{
-        console.log(err);
-      };
-    })
+    this.filteredImages = getImages(this.selectedTag)
   }
 
   async openPreview(img:any){
+    const selectedTag = this.selectedTag
     const modal = await this.modalCtrl.create({
       component: ImageModalComponent,
       cssClass: 'transparent-modal',
       componentProps:{
-        img
+        img,
+        selectedTag
       },
     });
 
@@ -104,15 +68,14 @@ export class QuotesPage implements OnInit {
 
   filter(tag: string){
     this.selectedTag=tag;
-    if(tag==="All"){
-      this.filteredImages=[...this.images];
-    }else if(tag==="Favorites"){
-      this.filteredImages = [...this.qs.favorites];
+    this.router.navigate([`/tabs/quotes/${this.selectedTag}`])
+    switch (tag){
+      case "favorites":
+        this.filteredImages = this.auth.userData?.favorites || AsyncPipe;
+        return
+      default:
+        this.filteredImages=getImages(this.selectedTag)
+        return
     }
-    else{
-      this.filteredImages = this.images.filter((img)=>img.tag===tag);
-    }
-    this.router.navigate(['/tabs/quotes', {tag:this.selectedTag}])
   }
-
 }

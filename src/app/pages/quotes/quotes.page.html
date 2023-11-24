@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="title">Quotes</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="this.auth.SignOut()">
+      <ion-button (click)="this.auth.signOut()">
         Logout <ion-icon name="log-out-outline"></ion-icon
       ></ion-button>
     </ion-buttons>
@@ -11,10 +11,14 @@
 <ion-content [fullscreen]="true">
   <div class="tags">
     <div *ngFor="let tag of tags">
-      <ion-chip *ngIf="tag===selectedTag" (click)="filter(tag)"
+      <ion-chip class="tag" *ngIf="tag===selectedTag" (click)="this.filter(tag)"
         >{{tag}}</ion-chip
       >
-      <ion-chip *ngIf="tag!==selectedTag" [outline]="true" (click)="filter(tag)"
+      <ion-chip
+        class="tag"
+        *ngIf="tag!==selectedTag"
+        [outline]="true"
+        (click)="this.filter(tag)"
         >{{tag}}</ion-chip
       >
     </div>
@@ -23,7 +27,12 @@
   <ion-content class="quotes">
     <div class="images">
       <div class="one-image" *ngFor="let image of filteredImages">
-        <img src="{{image.url}}" tappable (click)="openPreview(image)" />
+        <img
+          @todoItemAnim
+          src="{{image.url}}"
+          tappable
+          (click)="openPreview(image)"
+        />
       </div>
     </div>
   </ion-content>
