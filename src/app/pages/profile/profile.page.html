@@ -41,15 +41,17 @@
             />
           </ion-item>
           <ion-item>
-            <label for="bday">BirthDate</label>
-            <input
-              class="bday_input"
-              type="date"
-              name="bday"
-              id="bday"
-              value="{{this.userData.birthDate}}"
-              [(ngModel)]="this.userData.birthDate"
-            />
+            <label for="bday"
+              >BirthDate
+              <input
+                class="bday_input"
+                type="date"
+                name="bday"
+                id="bday"
+                value="{{this.userData.birthDate}}"
+                [(ngModel)]="this.userData.birthDate"
+              />
+            </label>
           </ion-item>
         </ion-list>
       </ion-card-content>
@@ -63,19 +65,23 @@
         >
       </ion-card-header>
       <ion-card-content>
-        <label>Select your prefered times to get notifications</label>
-        <ng-select
-          class="select"
-          [items]="times"
-          [multiple]="true"
-          [(ngModel)]="this.userData.notificationPreference"
-          dropdownPosition="bottom"
-          bindValue="id"
-          bindLabel="name"
-          [searchable]="true"
-          appendTo="body"
-        >
-        </ng-select>
+        <label
+          >Select your prefered times to get notifications
+          <ng-select
+            [name]="controlName"
+            class="select"
+            [items]="times"
+            [multiple]="true"
+            [(ngModel)]="this.userData.notificationPreference"
+            dropdownPosition="bottom"
+            bindValue="id"
+            bindLabel="name"
+            [searchable]="true"
+            appendTo="body"
+          >
+          </ng-select>
+        </label>
+
         <br />
       </ion-card-content>
     </ion-card>

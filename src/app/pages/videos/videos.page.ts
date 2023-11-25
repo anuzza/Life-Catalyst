@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ViewWillEnter } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './videos.page.html',
   styleUrls: ['./videos.page.scss'],
 })
-export class VideosPage implements OnInit{
+export class VideosPage implements ViewWillEnter{
   constructor(private sanitizer: DomSanitizer, public auth: AuthService,
     public router: Router, public route: ActivatedRoute) { }
   // ionViewWillEnter(): void {
@@ -138,7 +139,7 @@ export class VideosPage implements OnInit{
     },
   ]
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.selectedTag=this.route.snapshot.paramMap.get('id')
      if(!this.tags.includes(this.selectedTag)){
       this.select(this.tags[0])

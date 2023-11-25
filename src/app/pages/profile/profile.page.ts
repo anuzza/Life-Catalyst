@@ -30,6 +30,7 @@ export class ProfilePage implements OnInit,OnDestroy {
   };
 
   userDataSubscription: Subscription;
+  controlName="notify"
 
   constructor(private toastController: ToastController, public auth: AuthService) {
    }

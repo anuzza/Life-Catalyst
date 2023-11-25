@@ -53,16 +53,13 @@ export class ImageModalComponent  implements OnInit,OnDestroy {
     }
   }
 
-  //capacitor share: temporary link for now
-  //actual url will be fetched from the api
   async share(){
     try {
       await Share.share({
-      url:'https://media.istockphoto.com/id/1417433518/photo/pine-tree-forest-on-a-hill-desktop-background.jpg?s=1024x1024&w=is&k=20&c=0RIgbgqrlXqJw6Kw_zRJaQN2BtCfwSVfGL0uyHrIBk0=',
+      url:this.img.url,
     });
     } catch (error) {
-      console.log("Operation not allowed ", error.message)
+      this.auth.presentToast("danger", `${error.message}`)
     }
-
   }
 }

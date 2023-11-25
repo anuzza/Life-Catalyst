@@ -28,7 +28,7 @@ export class AuthService {
   ) {
   }
 
-  private async presentToast(type, message) {
+  async presentToast(type, message) {
     const toast = await this.toast.create({
       message: message,
       duration: 1600,
