@@ -9,21 +9,25 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-searchbar
-    placeholder="Search"
-    color="light"
-    Value="Videos"
-  ></ion-searchbar>
-
-  <ion-content class="videos">
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let video of videos">
-          <div class="image-container">
-            <iframe [src]="showVideo(video.url)"> </iframe>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <div class="tags">
+    <div *ngFor="let tag of tags">
+      <ion-chip class="tag" *ngIf="tag===selectedTag" (click)="this.select(tag)"
+        >{{tag}}</ion-chip
+      >
+      <ion-chip
+        class="tag"
+        *ngIf="tag!==selectedTag"
+        [outline]="true"
+        (click)="this.select(tag)"
+        >{{tag}}</ion-chip
+      >
+    </div>
+  </div>
+  <ion-content class="container">
+    <div class="videos">
+      <div class="one-video" *ngFor="let video of filteredVideos">
+        <iframe [src]="showVideo(video.url)"> </iframe>
+      </div>
+    </div>
   </ion-content>
 </ion-content>

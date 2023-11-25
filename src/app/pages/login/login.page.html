@@ -41,11 +41,16 @@
         <ion-item>
           <ion-input
             formControlName="password"
-            type="password"
+            [type]="this.showPassword? 'text': 'password'"
             placeholder="Password *"
           >
           </ion-input>
-          <ion-icon name="lock-closed-outline"></ion-icon>
+
+          <ion-icon
+            [name]="this.pwIcon"
+            (click)="togglePw()"
+            class="eyeIcon"
+          ></ion-icon>
         </ion-item>
         <div
           *ngIf="this.loginForm.controls?.['password'].touched &&

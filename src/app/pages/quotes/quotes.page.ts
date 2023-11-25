@@ -31,7 +31,8 @@ export class QuotesPage implements ViewWillEnter,ViewWillLeave {
   favorites:any=[];
   imagesFetched=false
 
-  constructor(private loadingCtrl: LoadingController,private modalCtrl: ModalController, public auth: AuthService, public route: ActivatedRoute, public router: Router,private http: HttpClient) {
+  constructor(private loadingCtrl: LoadingController,private modalCtrl: ModalController,
+     public auth: AuthService, public route: ActivatedRoute, public router: Router,private http: HttpClient) {
   }
 
   async fetchImages(tag:string, ){

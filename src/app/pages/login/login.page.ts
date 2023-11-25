@@ -13,6 +13,8 @@ export class LoginPage implements OnInit {
 
 
   loginForm: FormGroup;
+  showPassword: boolean=false;
+  pwIcon:string="eye"
 
   constructor(public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
     public route: Router, public toast: ToastController, public auth:AuthService) { }
@@ -49,6 +51,15 @@ export class LoginPage implements OnInit {
       this.presentToast("danger","Please fill out all the required fields")
     }
     this.loginForm.reset();
+  }
+
+  togglePw(){
+    this.showPassword=!this.showPassword;
+    if(this.pwIcon==="eye"){
+      this.pwIcon="eye-off"
+    }else{
+      this.pwIcon="eye"
+    }
   }
 
 

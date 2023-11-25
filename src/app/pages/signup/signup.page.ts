@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupPage implements OnInit {
 
   signupForm: FormGroup;
+  showPassword: boolean=false;
+  pwIcon:string="eye"
 
   constructor(public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
     public auth: AuthService, public route: Router, public toast: ToastController) { }
@@ -48,6 +50,15 @@ export class SignupPage implements OnInit {
       this.presentToast("danger","Please fill out all the required fields")
     }
     //this.signupForm.reset();
+  }
+
+  togglePw(){
+    this.showPassword=!this.showPassword;
+    if(this.pwIcon==="eye"){
+      this.pwIcon="eye-off"
+    }else{
+      this.pwIcon="eye"
+    }
   }
 
 }

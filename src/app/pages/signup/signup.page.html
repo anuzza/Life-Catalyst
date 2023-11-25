@@ -63,10 +63,14 @@
           <ion-input
             formControlName="password"
             placeholder="Password *"
-            type="password"
+            [type]="this.showPassword? 'text': 'password'"
           >
           </ion-input>
-          <ion-icon name="lock-closed-outline"></ion-icon>
+          <ion-icon
+            [name]="this.pwIcon"
+            (click)="togglePw()"
+            class="eyeIcon"
+          ></ion-icon>
         </ion-item>
         <div
           *ngIf="this.signupForm.controls?.['password'].touched &&
@@ -82,7 +86,7 @@
             class="error"
             *ngIf="this.errorControl?.['password'].errors?.['pattern']"
           >
-            Password must have minimum eight characters, and a number
+            Password must contain minimum eight characters, and a number
           </ion-text>
         </div>
         <div class="signinlink">
