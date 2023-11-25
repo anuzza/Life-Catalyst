@@ -19,7 +19,7 @@ export class HomePage {
     private modalCtrl: ModalController, public route: Router, public auth: AuthService ) {}
 
   ngOnInit() {
-    this.openModal();
+     this.openModal()
   }
 
   message="hellol"
@@ -49,6 +49,6 @@ export class HomePage {
   }
 
   async logout(){
-    this.auth.SignOut();
+    this.auth.signOut();
   }
 }

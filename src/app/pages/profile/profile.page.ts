@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,10 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
-
-  user:any;
-  times =[
+export class ProfilePage implements OnInit,OnDestroy {
+   times =[
     {
       id:1,
       name: "Morning"
@@ -23,32 +22,44 @@ export class ProfilePage implements OnInit {
       name: "Night"
     }]
 
+  userData= {
+    fullname:"",
+    email:"",
+    birthDate:"",
+    notificationPreference:[this.times[0].id]
+  };
+
+  userDataSubscription: Subscription;
 
   constructor(private toastController: ToastController, public auth: AuthService) {
    }
 
-  ngOnInit(){
-    this.user=this.auth.userData;
-    console.log(this.user);
-
-
+  ngOnInit(): void {
+    this.userDataSubscription = this.auth.userData$.subscribe(data => {
+      if(data){
+        console.log(data)
+        this.userData = data;
+      }
+    });
   }
 
-  async presentToast(position: 'top' | 'middle' | 'bottom') {
-    const toast = await this.toastController.create({
-      message: 'Welcome to LifeCatalyst!',
-      duration: 500,
-      position: position,
-      color: "success",
-      animated:true
-    });
+  ngOnDestroy(): void {
+    // Unsubscribe to avoid memory leaks
+    this.userDataSubscription.unsubscribe();
+  }
 
+
+  async presentToast(type, message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1600,
+      position: 'top',
+      color: type,
+    });
     await toast.present();
   }
 
   save(){
-    this.auth.UpdateUserData(this.auth.userData);
+    this.auth.UpdateUserData(this.userData);
   }
-
-
 }

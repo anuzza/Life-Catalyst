@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 import { LoggedInGuard } from '../guards/logged-in.guard';
+import { QuotesPage } from '../pages/quotes/quotes.page';
 
 const routes: Routes = [
   {
@@ -15,7 +16,11 @@ const routes: Routes = [
       },
       {
         path: 'quotes',
-        loadChildren: () => import('../pages/quotes/quotes.module').then( m => m.QuotesPageModule),
+        loadChildren: () => import('../pages/quotes/quotes.module').then( m => m.QuotesPageModule)
+      },
+      {
+        path: 'quotes/:id',
+        loadChildren: () => import('../pages/quotes/quotes.module').then( m => m.QuotesPageModule)
       },
       {
         path: 'videos',

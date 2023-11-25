@@ -1,22 +1,13 @@
 import { Component } from '@angular/core';
-import { ModalController, ViewWillEnter } from '@ionic/angular';
+import { LoadingController, ModalController, ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { ImageModalComponent } from 'src/app/components/image-modal/image-modal.component';
 import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/services/auth.service';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AsyncPipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
- function getImages(tag:string){
-    const imagesArr =[]
-    for(let i=0;i<20;i++){
-   imagesArr.push({
-           tag,
-    url:`https://zenquotes.io/api/image/${environment.imageAPIKey}&keyword=${tag}?${i}`
-        })
-    }
-    return imagesArr
-  }
 
 @Component({
   selector: 'app-quotes',
@@ -32,23 +23,57 @@ import { AsyncPipe } from '@angular/common';
     ])
   ]
 })
-export class QuotesPage implements ViewWillEnter {
+export class QuotesPage implements ViewWillEnter,ViewWillLeave {
   tags=["change", "confidence", "inspiration", "success", "failure","life","anxiety","favorites"]
   filteredImages:any=[];
-  favoriteImages:any=[];
   selectedTag:any="";
-  user:any;
+  userDataSubscription: Subscription;
+  favorites:any=[];
+  imagesFetched=false
 
-  constructor(private modalCtrl: ModalController, public auth: AuthService, public route: ActivatedRoute, public router: Router) {
-    this.selectedTag=this.route.snapshot.paramMap.get('id')
+  constructor(private loadingCtrl: LoadingController,private modalCtrl: ModalController, public auth: AuthService, public route: ActivatedRoute, public router: Router,private http: HttpClient) {
+  }
+
+  async fetchImages(tag:string, ){
+    if(!this.imagesFetched){
+      const loading = await this.loadingCtrl.create();
+      await loading.present();
+       await this.http.get(
+            `https://images-api-omega.vercel.app/images/${tag}`)
+            .subscribe((response)=>{
+              if (response) {
+                this.filteredImages = response;
+              }
+        })
+      await loading.dismiss()
+      this.imagesFetched = true
+    }
   }
 
   ionViewWillEnter() {
-    if (!this.selectedTag){
-      this.selectedTag = this.tags[0]
+    this.selectedTag=this.route.snapshot.paramMap.get('id')
+     if(!this.tags.includes(this.selectedTag)){
+      this.select(this.tags[0])
     }
 
-    this.filteredImages = getImages(this.selectedTag)
+     this.userDataSubscription = this.auth.userData$.subscribe(data => {
+       if(data){
+          this.favorites = data.favorites
+        }
+      switch(this.selectedTag){
+        case "favorites":
+          this.filteredImages= [...this.favorites]
+          return
+        default:
+          this.fetchImages(this.selectedTag)
+          return
+        }
+     })
+  }
+
+  ionViewWillLeave(): void {
+       // Unsubscribe to avoid memory leaks
+    this.userDataSubscription.unsubscribe();
   }
 
   async openPreview(img:any){
@@ -65,17 +90,7 @@ export class QuotesPage implements ViewWillEnter {
     modal.present();
   }
 
-
-  filter(tag: string){
-    this.selectedTag=tag;
-    this.router.navigate([`/tabs/quotes/${this.selectedTag}`])
-    switch (tag){
-      case "favorites":
-        this.filteredImages = this.auth.userData?.favorites || AsyncPipe;
-        return
-      default:
-        this.filteredImages=getImages(this.selectedTag)
-        return
-    }
+  select(tag: string){
+    this.router.navigate([`/tabs/quotes/${tag}`])
   }
 }

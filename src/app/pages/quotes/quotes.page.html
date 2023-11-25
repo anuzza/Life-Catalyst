@@ -3,7 +3,8 @@
     <ion-title class="title">Quotes</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="this.auth.signOut()">
-        Logout <ion-icon name="log-out-outline"></ion-icon
+        Logout
+        <ion-icon name="log-out-outline" class="margin-button"></ion-icon
       ></ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -11,14 +12,14 @@
 <ion-content [fullscreen]="true">
   <div class="tags">
     <div *ngFor="let tag of tags">
-      <ion-chip class="tag" *ngIf="tag===selectedTag" (click)="this.filter(tag)"
+      <ion-chip class="tag" *ngIf="tag===selectedTag" (click)="this.select(tag)"
         >{{tag}}</ion-chip
       >
       <ion-chip
-        class="tag"
+        class="tags"
         *ngIf="tag!==selectedTag"
         [outline]="true"
-        (click)="this.filter(tag)"
+        (click)="this.select(tag)"
         >{{tag}}</ion-chip
       >
     </div>
@@ -32,6 +33,7 @@
           src="{{image.url}}"
           tappable
           (click)="openPreview(image)"
+          loading="lazy"
         />
       </div>
     </div>

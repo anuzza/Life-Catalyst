@@ -6,18 +6,11 @@ ion-footer{
     margin-bottom: 10px;
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: realtive;
-}
 
 .image{
     object-fit: fill;
-    width: 600px;
-    height: 600px;
+    // width: 600px;
+    height: 100%;
     display: block;
 
 }

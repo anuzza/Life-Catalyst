@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-card-header>
       <ion-card-title
-        >Hi {{ this.auth.userData?.fullname?.split(" ")[0] }}!</ion-card-title
+        >Hi {{ this.userData?.fullname?.split(" ")[0] }}!</ion-card-title
       >
     </ion-card-header>
     <ion-buttons slot="end">
@@ -22,37 +22,37 @@
       <div class="row1">
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          [routerLink]="['/tabs/quotes', 'inspiration']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-smile-beam"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          [routerLink]="['/tabs/quotes', 'change']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-laugh-beam"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Success' }]"
+          [routerLink]="['/tabs/quotes', 'success']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-grin-stars"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          [routerLink]="['/tabs/quotes', 'confidence']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-grin-hearts"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Anxiety' }]"
+          [routerLink]="['/tabs/quotes', 'anxiety']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-tired"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          [routerLink]="['/tabs/quotes', 'life']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-surprise"></i
         ></ion-button>
@@ -60,37 +60,37 @@
       <div class="row2">
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Anxiety' }]"
+          [routerLink]="['/tabs/quotes', 'inspiration']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-sad-tear"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          [routerLink]="['/tabs/quotes', 'confidence']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-rolling-eyes"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          [routerLink]="['/tabs/quotes', 'failure']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-sad-cry"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Inspiring' }]"
+          [routerLink]="['/tabs/quotes', 'change']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-angry"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Motivation' }]"
+          [routerLink]="['/tabs/quotes', 'inspiration']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-dizzy"></i
         ></ion-button>
         <ion-button
           fill="clear"
-          [routerLink]="['/tabs/quotes', { tag: 'Success' }]"
+          [routerLink]="['/tabs/quotes', 'success']"
           (click)="cancel()"
           ><i class="fa-solid fa-face-grimace"></i
         ></ion-button>

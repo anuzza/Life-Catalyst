@@ -1,16 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="this.qs.addFav(this.img)" [strong]="true"
-        ><ion-icon
-          *ngIf="!this.qs.favorites.includes(this.img)"
-          name="heart-outline"
-        ></ion-icon
-        ><ion-icon
-          class="heart"
-          *ngIf="this.qs.favorites.includes(this.img)"
-          name="heart"
-        ></ion-icon>
+      <ion-button (click)="this.favImage(this.img)" [strong]="true"
+        ><ion-icon *ngIf="!isFavorited" name="heart-outline"></ion-icon
+        ><ion-icon class="heart" *ngIf="isFavorited" name="heart"></ion-icon>
       </ion-button>
       <ion-button (click)="share()" [strong]="true"
         ><ion-icon name="share-outline"></ion-icon
@@ -25,7 +18,5 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="conatiner">
     <ion-img src="{{ img.url }}" class="image"></ion-img>
-  </div>
 </ion-content>

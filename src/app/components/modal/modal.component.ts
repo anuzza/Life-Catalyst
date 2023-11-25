@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -8,20 +9,24 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent  implements OnInit {
+export class ModalComponent  implements OnInit,OnDestroy {
+  userData: any;
+  userDataSubscription: Subscription;
 
-  constructor(private modalCtrl: ModalController, public auth: AuthService) {
-   }
+  constructor(private authService: AuthService, private modalCtrl:ModalController) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.userDataSubscription = this.authService.userData$.subscribe(data => {
+      this.userData = data;
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe to avoid memory leaks
+    this.userDataSubscription.unsubscribe();
   }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
-
-
-
-
-
 }

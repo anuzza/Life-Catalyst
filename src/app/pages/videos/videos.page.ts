@@ -17,7 +17,7 @@ export class VideosPage implements OnInit {
   showVideo(video:string){
     return this.sanitizer.bypassSecurityTrustResourceUrl(video);
   }
-
+  tags=["All","Meditation", "Motivation", "Mindfulness", "Breathing"]
   videos= [
     {
       url: "https://www.youtube.com/embed/xv-ejEOogaA",

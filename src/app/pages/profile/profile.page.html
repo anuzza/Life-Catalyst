@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="title"> My Profile</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="this.auth.SignOut()">
+      <ion-button (click)="this.auth.signOut()">
         Logout <ion-icon name="log-out-outline"></ion-icon
       ></ion-button>
     </ion-buttons>
@@ -11,7 +11,7 @@
 <ion-content [fullscreen]="true">
   <div class="profile">
     <ion-icon class="person" name="person-circle-outline"></ion-icon>
-    <span>{{this.auth.userData.fullname}}</span>
+    <span>{{this.userData.fullname}}</span>
 
     <ion-card class="card">
       <ion-card-header>
@@ -25,8 +25,8 @@
             <ion-input
               name="name"
               label="Full Name *"
-              value="{{this.auth.userData.fullname}}"
-              [(ngModel)]="this.auth.userData.fullname"
+              value="{{this.userData.fullname}}"
+              [(ngModel)]="this.userData.fullname"
               required
             ></ion-input>
           </ion-item>
@@ -35,19 +35,20 @@
               name="email"
               label="Email *"
               type="email"
-              value="{{this.auth.userData.email}}"
-              [(ngModel)]="this.auth.userData.email"
+              value="{{this.userData.email}}"
+              [(ngModel)]="this.userData.email"
               required
             />
           </ion-item>
           <ion-item>
             <label for="bday">BirthDate</label>
             <input
+              class="bday_input"
               type="date"
               name="bday"
               id="bday"
-              value="{{this.auth.userData.birthDate}}"
-              [(ngModel)]="this.auth.userData.birthDate"
+              value="{{this.userData.birthDate}}"
+              [(ngModel)]="this.userData.birthDate"
             />
           </ion-item>
         </ion-list>
@@ -67,7 +68,7 @@
           class="select"
           [items]="times"
           [multiple]="true"
-          [(ngModel)]="this.auth.userData.notificationPreference"
+          [(ngModel)]="this.userData.notificationPreference"
           dropdownPosition="bottom"
           bindValue="id"
           bindLabel="name"
