@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "697032358497",
+    "project_id": "lifecatalyst-bf7c1",
+    "storage_bucket": "lifecatalyst-bf7c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697032358497:android:b6d8be208f7fdce1f74820",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcHNCgRIHngSxxZP92TAjDllxFI_QJkww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

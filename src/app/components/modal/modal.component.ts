@@ -1,32 +1,38 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
-
+import { QuoteService } from 'src/app/services/quote.service';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent  implements OnInit,OnDestroy {
-  userData: any;
-  userDataSubscription: Subscription;
+export class ModalComponent  implements OnInit {
 
-  constructor(private authService: AuthService, private modalCtrl:ModalController) { }
+  quote:string;
+
+  constructor(private modalCtrl:ModalController,
+    public quoteService:QuoteService) { }
 
   ngOnInit(): void {
-    this.userDataSubscription = this.authService.userData$.subscribe(data => {
-      this.userData = data;
-    });
-  }
-
-  ngOnDestroy(): void {
-    // Unsubscribe to avoid memory leaks
-    this.userDataSubscription.unsubscribe();
+    this.fetchQuoteOfTheDay();
   }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
+
+  fetchQuoteOfTheDay() {
+    this.quoteService.getQuoteOfTheDay().subscribe(
+      (data: any) => {
+        // Assuming the API response has a property 'quote' containing the quote of the day
+        this.quote = data[0];
+      },
+      (error) => {
+        console.error('Error fetching quote:', error);
+      }
+    );
+  }
+
+
 }

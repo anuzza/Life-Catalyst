@@ -17,7 +17,6 @@ import {StorageModule} from "@angular/fire/storage";
 import { FirebaseAppModule, getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import {FirestoreSettings, initializeFirestore, persistentLocalCache, persistentMultipleTabManager, provideFirestore} from "@angular/fire/firestore";
 import {HttpClientModule, HttpClientJsonpModule} from "@angular/common/http";
-
 import { AuthService } from './services/auth.service';
 import { environment } from 'src/environments/environment';
 

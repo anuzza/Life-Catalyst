@@ -11,22 +11,76 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <div class="container">
-    <ion-card class="card" [routerLink]="['/tabs/quotes', 'inspiration']">
-      <div class="image">
-        <img
-          alt="a girl, holding green success flag"
-          src="assets/images/motivation.png"
-        />
-      </div>
-
+    <ion-card class="card-emotions">
+      <ion-toolbar>
+        <ion-card-header>
+          <ion-card-title
+            >Hi {{ this.userData?.fullname?.split(" ")[0] }}!</ion-card-title
+          >
+        </ion-card-header>
+      </ion-toolbar>
       <ion-card-header>
-        <ion-card-title>Motivation</ion-card-title>
+        <ion-card-title>How are you feeling today?</ion-card-title>
       </ion-card-header>
-
-      <ion-card-content>
-        Find inspiring quotes and encouraging words to uplift your mood
-      </ion-card-content>
+      <div>
+        <ion-card-content>
+          Select one of the emotions that describes your mood lately
+        </ion-card-content>
+        <div class="emotions">
+          <div class="row1">
+            <ion-button
+              fill="clear"
+              [routerLink]="['/tabs/quotes', 'inspiration']"
+              ><i class="fa-solid fa-face-smile-beam"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'change']"
+              ><i class="fa-solid fa-face-laugh-beam"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'success']"
+              ><i class="fa-solid fa-face-grin-stars"></i
+            ></ion-button>
+            <ion-button
+              fill="clear"
+              [routerLink]="['/tabs/quotes', 'confidence']"
+              ><i class="fa-solid fa-face-grin-hearts"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'anxiety']"
+              ><i class="fa-solid fa-face-tired"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'life']"
+              ><i class="fa-solid fa-face-surprise"></i
+            ></ion-button>
+          </div>
+          <div class="row2">
+            <ion-button
+              fill="clear"
+              [routerLink]="['/tabs/quotes', 'inspiration']"
+              ><i class="fa-solid fa-face-sad-tear"></i
+            ></ion-button>
+            <ion-button
+              fill="clear"
+              [routerLink]="['/tabs/quotes', 'confidence']"
+              ><i class="fa-solid fa-face-rolling-eyes"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'failure']"
+              ><i class="fa-solid fa-face-sad-cry"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'change']"
+              ><i class="fa-solid fa-face-angry"></i
+            ></ion-button>
+            <ion-button
+              fill="clear"
+              [routerLink]="['/tabs/quotes', 'inspiration']"
+              ><i class="fa-solid fa-face-dizzy"></i
+            ></ion-button>
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'success']"
+              ><i class="fa-solid fa-face-grimace"></i
+            ></ion-button>
+          </div>
+        </div>
+      </div>
     </ion-card>
+
     <ion-card class="card" [routerLink]="['/tabs/videos', 'meditation']">
       <div class="image">
         <img
