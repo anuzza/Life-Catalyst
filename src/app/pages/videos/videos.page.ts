@@ -148,7 +148,6 @@ export class VideosPage implements ViewWillEnter{
       this.filteredVideos=[...this.videos];
     }else{
       this.filteredVideos=this.videos.filter((vid)=>vid.tag===this.selectedTag);
-      console.log(this.filteredVideos);
     }
   }
 

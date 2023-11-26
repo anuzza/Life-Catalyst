@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { AuthService } from 'src/app/services/auth.service';
 import { QuoteService } from 'src/app/services/quote.service';
+
+
+interface QuoteData{
+  quote:string
+  author:string
+  date: Date
+}
 
 @Component({
   selector: 'app-modal',
@@ -8,32 +17,43 @@ import { QuoteService } from 'src/app/services/quote.service';
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent  implements OnInit {
-
-  quote:any;
+  quote:QuoteData;
 
   constructor(private modalCtrl:ModalController,
-    public quoteService:QuoteService) { }
+    public quoteService:QuoteService,private storage:Storage, public auth:AuthService) {
 
-  ngOnInit(): void {
-    this.fetchQuoteOfTheDay();
+     }
+
+  async ngOnInit() {
+    await this.storage.create()
+    await this.fetchQuoteOfTheDay();
   }
 
   cancel() {
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  fetchQuoteOfTheDay() {
-    this.quoteService.getQuoteOfTheDay().subscribe(
-      (data: any) => {
-        // Assuming the API response has a property 'quote' containing the quote of the day
-        this.quote = data[0];
-        console.log(this.quote);
+  async fetchQuoteOfTheDay() {
+    const today = new Date()
+    const quoteData:QuoteData = await this.storage.get("quote")
+    if(quoteData?.date.setHours(0,0,0,0) === today.setHours(0,0,0,0)) {
+      this.quote = quoteData
+    }else{
+      this.quoteService.getQuoteOfTheDay().subscribe(
+        async (data: any) => {
+          const quote = data[0]
+          const quoteData = {
+            quote:quote.q,
+            author:quote.a,
+            date:today
+          }
+          await this.storage.set("quote",quoteData)
+          this.quote = quoteData
       },
-      (error) => {
-        console.error('Error fetching quote:', error);
-      }
-    );
-  }
-
-
+        (error) => {
+          this.auth.presentToast('danger', "Unable to fetch quote of the day!");
+        }
+      );
+    }
+}
 }

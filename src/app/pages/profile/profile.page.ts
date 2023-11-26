@@ -38,7 +38,6 @@ export class ProfilePage implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.userDataSubscription = this.auth.userData$.subscribe(data => {
       if(data){
-        console.log(data)
         this.userData = data;
       }
     });

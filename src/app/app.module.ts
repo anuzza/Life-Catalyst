@@ -19,13 +19,15 @@ import {FirestoreSettings, initializeFirestore, persistentLocalCache, persistent
 import {HttpClientModule, HttpClientJsonpModule} from "@angular/common/http";
 import { AuthService } from './services/auth.service';
 import { environment } from 'src/environments/environment';
+import { QuoteService } from './services/quote.service';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent, ModalComponent, ImageModalComponent],
   imports: [BrowserModule,FormsModule, ReactiveFormsModule, NgSelectModule, HttpClientModule, HttpClientJsonpModule,
 FirebaseAppModule, AngularFireAuthModule, AngularFireModule,BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    IonicModule.forRoot(),
+    IonicModule.forRoot(), IonicStorageModule.forRoot(),
     StorageModule,
     provideFirestore(() =>
         initializeFirestore(getApp(), {
@@ -40,7 +42,7 @@ FirebaseAppModule, AngularFireAuthModule, AngularFireModule,BrowserAnimationsMod
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
 })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthService, QuoteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
