@@ -56,35 +56,6 @@
         </ion-list>
       </ion-card-content>
     </ion-card>
-
-    <ion-card class="card">
-      <ion-card-header>
-        <ion-card-title>
-          <ion-icon name="notifications-circle-outline"></ion-icon> Notification
-          Settings</ion-card-title
-        >
-      </ion-card-header>
-      <ion-card-content>
-        <label
-          >Select your prefered times to get notifications
-          <ng-select
-            [name]="controlName"
-            class="select"
-            [items]="times"
-            [multiple]="true"
-            [(ngModel)]="this.userData.notificationPreference"
-            dropdownPosition="bottom"
-            bindValue="id"
-            bindLabel="name"
-            [searchable]="true"
-            appendTo="body"
-          >
-          </ng-select>
-        </label>
-
-        <br />
-      </ion-card-content>
-    </ion-card>
     <ion-button class="button" (click)="save()">Save</ion-button>
   </div>
 </ion-content>
