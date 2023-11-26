@@ -123,12 +123,6 @@ export class AuthService {
       });
   }
 
-  // // Returns true when user is logged in
-  // isLoggedIn() {
-  //   return this.userDataSubject.value!=null
-  // }
-
-
  async getUserData(userID:any) {
     try {
       const userJSON = await this.afs.firestore.collection('users').doc("user_"+userID).get()
@@ -140,7 +134,7 @@ export class AuthService {
       this.isAuthenticatedSubject.next(true)
       localStorage.setItem('user',this.userDataSubject.value.uid)
     } catch (err) {
-      // add error
+      this.presentToast("danger", err.message)
     }
   }
 
