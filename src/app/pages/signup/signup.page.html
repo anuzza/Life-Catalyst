@@ -10,14 +10,12 @@
 </ion-header>
 <ion-content [fullscreen]="true">
   <ion-img class="image" src="assets/images/sammyPlay.png"></ion-img>
-
   <div class="container">
     <div class="header">
       <p class="subtitle">
         Sign up to reframe your mind and encourage your growth
       </p>
     </div>
-
     <form [formGroup]="signupForm" novalidate (ngSubmit)="signUp()">
       <div class="ion-padding">
         <ion-item>
@@ -90,7 +88,7 @@
           </ion-text>
         </div>
         <div class="signinlink">
-          <p>Already a member?<a [routerLink]="['/login']">Login</a></p>
+          <p>Already a member? <a [routerLink]="['/login']">Login</a></p>
         </div>
         <div class="btn">
           <ion-button type="submit" [disabled]="signupForm.invalid"

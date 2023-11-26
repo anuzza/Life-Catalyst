@@ -71,7 +71,6 @@ export class AuthService {
           email: email,
           fullname:fullname,
           birthDate: "",
-          notificationPreference: [1],
           favorites:[],
         }
         await this.afs.collection('users').
@@ -134,7 +133,7 @@ export class AuthService {
       this.isAuthenticatedSubject.next(true)
       localStorage.setItem('user',this.userDataSubject.value.uid)
     } catch (err) {
-      this.presentToast("danger", err.message)
+      // this.presentToast("danger", err.message)
     }
   }
 

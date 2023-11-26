@@ -1,5 +1,6 @@
 a{
-    color: #ff9008
+    color: #f78a04;
+    font-weight: bold;
 }
 
 .input{
@@ -10,20 +11,20 @@ ion-item{
     border-radius: 10px;
     margin-bottom: 16px;
 }
+
 .image{
 
     height: 30%;
 
 }
+
 .header{
     margin-bottom: 0.5%;
     text-align: center;
 
     .subtitle{
         font-size: 1rem;
-
     }
-
 }
 
 .signuplink{
@@ -40,7 +41,6 @@ ion-item{
 
     p{
         font-size: 0.9rem;
-
     }
 
     a{
@@ -64,14 +64,9 @@ ion-item{
         font-size: 0.9rem;
         text-decoration: none;
     }
-
-
 }
 
-
-
 .container{
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +77,6 @@ ion-item{
     color: red;
     font: 0.5rem;
 }
-
 
 .eyeIcon{
     cursor: pointer;
