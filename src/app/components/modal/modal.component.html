@@ -1,12 +1,20 @@
 <div class="card">
-  <ion-toolbar>
-    <ion-card-header>
-      <ion-card-title>Here is your quote of the day!</ion-card-title>
-    </ion-card-header>
-    <ion-buttons slot="end">
-      <ion-button (click)="cancel()" [strong]="true"
-        ><ion-icon name="close-outline"></ion-icon
-      ></ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="title"> Quote of the Day </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cancel()" [strong]="true"
+          ><ion-icon name="close-outline"></ion-icon
+        ></ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container">
+    <ion-img class="img" src="assets/images/woman.png"></ion-img>
+    <div class="quote">
+      <p>"{{ this.quote?.q }}"</p>
+      <br />
+      <span class="author">-{{ this.quote?.a }}</span>
+    </div>
+  </div>
 </div>

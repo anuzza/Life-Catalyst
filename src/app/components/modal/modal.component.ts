@@ -9,7 +9,7 @@ import { QuoteService } from 'src/app/services/quote.service';
 })
 export class ModalComponent  implements OnInit {
 
-  quote:string;
+  quote:any;
 
   constructor(private modalCtrl:ModalController,
     public quoteService:QuoteService) { }
@@ -27,6 +27,7 @@ export class ModalComponent  implements OnInit {
       (data: any) => {
         // Assuming the API response has a property 'quote' containing the quote of the day
         this.quote = data[0];
+        console.log(this.quote);
       },
       (error) => {
         console.error('Error fetching quote:', error);

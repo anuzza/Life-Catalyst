@@ -12,19 +12,15 @@
 <ion-content [fullscreen]="true">
   <div class="container">
     <ion-card class="card-emotions">
-      <ion-toolbar>
-        <ion-card-header>
-          <ion-card-title
-            >Hi {{ this.userData?.fullname?.split(" ")[0] }}!</ion-card-title
-          >
-        </ion-card-header>
-      </ion-toolbar>
       <ion-card-header>
         <ion-card-title>How are you feeling today?</ion-card-title>
       </ion-card-header>
       <div>
         <ion-card-content>
-          Select one of the emotions that describes your mood lately
+          <h2>
+            Hi {{ this.userData?.fullname?.split(" ")[0] }}! Select one of the
+            emotions that describe your mood lately
+          </h2>
         </ion-card-content>
         <div class="emotions">
           <div class="row1">
@@ -47,9 +43,6 @@
             <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'anxiety']"
               ><i class="fa-solid fa-face-tired"></i
             ></ion-button>
-            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'life']"
-              ><i class="fa-solid fa-face-surprise"></i
-            ></ion-button>
           </div>
           <div class="row2">
             <ion-button
@@ -65,16 +58,13 @@
             <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'failure']"
               ><i class="fa-solid fa-face-sad-cry"></i
             ></ion-button>
-            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'change']"
+            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'life']"
               ><i class="fa-solid fa-face-angry"></i
             ></ion-button>
             <ion-button
               fill="clear"
               [routerLink]="['/tabs/quotes', 'inspiration']"
               ><i class="fa-solid fa-face-dizzy"></i
-            ></ion-button>
-            <ion-button fill="clear" [routerLink]="['/tabs/quotes', 'success']"
-              ><i class="fa-solid fa-face-grimace"></i
             ></ion-button>
           </div>
         </div>

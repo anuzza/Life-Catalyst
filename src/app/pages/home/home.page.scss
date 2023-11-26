@@ -6,7 +6,7 @@
 
 
 img{
-    height: 200px;
+    height: 230px;
 
 
 }
@@ -50,17 +50,18 @@ ion-button:hover{
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+    flex-wrap: wrap;
 
 }
 
 .row1, .row2{
     display: flex;
-
+    flex-basis: content;
 }
 
 i{
-    color: rgb(251, 218, 28);
-    font-size: 25px;
+    color: rgb(248, 183, 70);
+    font-size: 30px;
 }
 
 .card-emotions{
