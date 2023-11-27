@@ -29,31 +29,6 @@ export class VideosPage implements ViewWillEnter{
       tag: "meditation"
     },
     {
-      url: "https://www.youtube.com/embed/QTsUEOUaWpY",
-      tag: "mindfulness"
-    },
-    {
-      url: "https://www.youtube.com/embed/ru4hdcMmlwQ",
-      tag: "meditation"
-    },
-    {
-      url: "https://www.youtube.com/embed/_XLY_XXBQWE",
-      tag: "motivation"
-    },
-    {
-      url: "https://www.youtube.com/embed/71_NkXgAK1g",
-      tag: "motivation"
-    },
-
-    {
-      url: "https://www.youtube.com/embed/7Ep5mKuRmAA",
-      tag: "breathing"
-    },
-    {
-      url: "https://www.youtube.com/embed/wfDTp2GogaQ",
-      tag: "breathing"
-    },
-    {
       url: "https://www.youtube.com/embed/Ugm0KopaYPo",
       tag: "meditation"
     },
@@ -65,15 +40,7 @@ export class VideosPage implements ViewWillEnter{
       url: "https://www.youtube.com/embed/rO0MT1oPPK4",
       tag: "meditation"
     },
-    {
-      url: "https://www.youtube.com/embed/bDM4PiTLvT4",
-      tag: "meditation"
-    },
-    {
-      url: "https://www.youtube.com/embed/3iUf73v92lI",
-      tag: "mindfulness"
-    },
-    {
+   {
       url: "https://www.youtube.com/embed/bLpChrgS0AY",
       tag: "mindfulness"
     },
@@ -85,10 +52,7 @@ export class VideosPage implements ViewWillEnter{
       url: "https://www.youtube.com/embed/NECs97k_8Z4",
       tag: "mindfulness"
     },
-    {
-      url: "https://www.youtube.com/embed/0QXmmP4psbA",
-      tag: "motivation"
-    },
+
      {
       url: "https://www.youtube.com/embed/7CBfCW67xT8",
       tag: "mindfulness"
@@ -109,10 +73,6 @@ export class VideosPage implements ViewWillEnter{
       url: "https://www.youtube.com/embed/ga-MniJxQz8",
       tag: "motivation"
     },
-    {
-      url: "https://www.youtube.com/embed/8vkYJf8DOsc",
-      tag: "breathing"
-    },
      {
       url: "https://www.youtube.com/embed/1Dv-ldGLnIY",
       tag: "breathing"
@@ -122,16 +82,8 @@ export class VideosPage implements ViewWillEnter{
       tag: "breathing"
     },
      {
-      url: "https://www.youtube.com/embed/l_NYrWqUR40",
-      tag: "motivation"
-    },
-     {
       url: "https://www.youtube.com/embed/enJyOTvEn4M",
       tag: "breathing"
-    },
-    {
-      url: "https://www.youtube.com/embed/iXUFMndiVxM",
-      tag: "motivation"
     },
     {
       url: "https://www.youtube.com/embed/4BmcV--IpNY",
